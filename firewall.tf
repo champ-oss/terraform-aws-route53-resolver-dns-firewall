@@ -25,6 +25,7 @@ resource "aws_route53_resolver_firewall_rule" "allow" {
 
 resource "aws_route53_resolver_firewall_rule" "deny" {
   count = var.enabled && length(var.deny_domains) > 0 ? 1 : 0
+  name  = "${var.git}-deny"
 
   firewall_rule_group_id  = aws_route53_resolver_firewall_rule_group.this[0].id
   firewall_domain_list_id = aws_route53_resolver_firewall_domain_list.deny[0].id
