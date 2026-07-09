@@ -4,20 +4,7 @@ data "aws_vpcs" "this" {
   }
 }
 
-data "aws_subnets" "this" {
-  tags = {
-    purpose = "vega"
-    Type    = "Private"
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpcs.this.ids[0]]
-  }
-}
-
 module "this" {
   source             = "../../"
-  private_subnet_ids = data.aws_subnets.this.ids
   vpc_id             = data.aws_vpcs.this.ids[0]
 }

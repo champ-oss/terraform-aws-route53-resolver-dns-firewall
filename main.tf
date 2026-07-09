@@ -1,5 +1,8 @@
-data "aws_region" "this" {}
-
-resource "random_id" "this" {
-  byte_length = 3
+locals {
+  tags = {
+    git       = var.git
+    cost      = "shared"
+    creator   = "terraform"
+    component = "resolver-dns-firewall"
+  }
 }
