@@ -14,6 +14,7 @@ resource "aws_route53_resolver_firewall_domain_list" "deny" {
 
 resource "aws_route53_resolver_firewall_rule" "allow" {
   count = var.enabled && length(var.allow_domains) > 0 ? 1 : 0
+  name  = "${var.git}-allow"
 
   firewall_rule_group_id  = aws_route53_resolver_firewall_rule_group.this[0].id
   firewall_domain_list_id = aws_route53_resolver_firewall_domain_list.allow[0].id
@@ -38,7 +39,7 @@ resource "aws_route53_resolver_firewall_rule_group" "this" {
 
   name = var.git
 
-  tags = merge(local.tags,var.tags)
+  tags = merge(local.tags, var.tags)
 }
 
 resource "aws_route53_resolver_firewall_rule_group_association" "this" {
