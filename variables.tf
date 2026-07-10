@@ -31,7 +31,7 @@ variable "tags" {
 variable "association_priority" {
   description = "Priority of the firewall rule group association."
   type        = number
-  default     = 100
+  default     = 1000
 }
 
 variable "mutation_protection" {
