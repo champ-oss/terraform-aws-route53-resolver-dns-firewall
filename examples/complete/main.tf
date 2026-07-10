@@ -103,7 +103,7 @@ module "this" {
   source                        = "../../"
   vpc_id                        = data.aws_vpcs.this.ids[0]
   enable_query_logging          = true
-  deny_domains                  = ["*.example.com"]
+  deny_domains                  = ["*.example.com."]
   enabled_r53_resolver_firewall = true
   association_priority          = 500
 }
