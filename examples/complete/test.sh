@@ -17,8 +17,8 @@ TASK_ARN=$(aws ecs run-task \
 
 echo "Task started: $TASK_ARN"
 
-echo "Waiting 300 seconds..."
-sleep 300
+# echo "Waiting 300 seconds..."
+# sleep 300
 
 echo "Stopping task..."
 aws ecs stop-task \

@@ -104,7 +104,7 @@ module "this" {
   vpc_id                        = data.aws_vpcs.this.ids[0]
   enable_query_logging          = true
   deny_domains                  = ["example.com.","*.example.com."]
-  allow_domains                 = ["amazonaws.com.","*.amazonaws.com.","github.com.","*.github.com."]
+  allow_domains                 = ["amazonaws.com.","*.amazonaws.com.","github.com.","*.github.com.","api.github.com.","*.api.github.com."]
   enabled_r53_resolver_firewall = true
   association_priority          = 500
 }
