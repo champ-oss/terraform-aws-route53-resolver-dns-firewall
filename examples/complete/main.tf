@@ -91,7 +91,7 @@ resource "aws_ecs_task_definition" "dns_test" {
       command = [
         "sh",
         "-c",
-        "dnf install -y bind-utils >/dev/null 2>&1 && dig amazonaws.com && dig github.com && dig api.github.com && dig s3.us-east-2.amazonaws.com"
+        "dnf install -y bind-utils >/dev/null 2>&1 && dig amazonaws.com >/dev/null && dig github.com >/dev/null && dig api.github.com >/dev/null && dig s3.us-east-2.amazonaws.com >/dev/null && tail -f /dev/null"
       ]
     }
   ])
