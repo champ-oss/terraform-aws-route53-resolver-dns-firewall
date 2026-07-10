@@ -91,7 +91,7 @@ resource "aws_ecs_task_definition" "dns_test" {
       command = [
         "sh",
         "-c",
-        "dnf install -y bind-utils >/dev/null 2>&1 && dig amazonaws.com >/dev/null && dig github.com >/dev/null && dig api.github.com >/dev/null && dig s3.us-east-2.amazonaws.com >/dev/null && tail -f /dev/null"
+        "dnf install -y bind-utils >/dev/null 2>&1 && dig amazonaws.com >/dev/null && dig github.com >/dev/null && dig api.github.com >/dev/null && dig example.com >/dev/null && tail -f /dev/null"
       ]
     }
   ])
@@ -100,9 +100,11 @@ resource "aws_ecs_task_definition" "dns_test" {
 }
 
 module "this" {
-  source             = "../../"
-  vpc_id             = data.aws_vpcs.this.ids[0]
-  enable_query_logging = true
+  source                        = "../../"
+  vpc_id                        = data.aws_vpcs.this.ids[0]
+  enable_query_logging          = true
+  deny_domains                  = ["*.example.com"]
+  enabled_r53_resolver_firewall = true
 }
 
 output "ecs_cluster_name" {
