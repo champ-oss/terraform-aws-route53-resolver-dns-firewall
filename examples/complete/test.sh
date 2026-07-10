@@ -16,3 +16,5 @@ TASK_ARN=$(aws ecs run-task \
   --network-configuration "awsvpcConfiguration={subnets=[\"$SUBNET\"],securityGroups=[\"$SECURITY_GROUP\"],assignPublicIp=ENABLED}" \
   --query 'tasks[0].taskArn' \
   --output text)
+
+sleep 300
